@@ -19,7 +19,7 @@ export const conservativeModel: IModelData[] = [
     {symbol: "BND", cusip: "", weight: "30", color: colors.denim},
     {symbol: "XLK", cusip: "", weight: "0", color: colors.midnightBlue},
     {symbol: "SCHH", cusip: "", weight: "0", color: colors.purple},
-    {symbol: "CD's", cusip: "", weight: "25", color: colors.trueViolet},
+    {symbol: "CDs", cusip: "", weight: "25", color: colors.trueViolet},
     {symbol: "Commodities", cusip: "", weight: "0", color: colors.melrose},
 ]
 
@@ -33,7 +33,7 @@ export const moderateModel: IModelData[] = [
     {symbol: "BND", cusip: "", weight: "10", color: colors.denim},
     {symbol: "XLK", cusip: "", weight: "0", color: colors.midnightBlue},
     {symbol: "SCHH", cusip: "", weight: "10", color: colors.purple},
-    {symbol: "CD's", cusip: "", weight: "10", color: colors.trueViolet},
+    {symbol: "CDs", cusip: "", weight: "10", color: colors.trueViolet},
     {symbol: "Commodities", cusip: "", weight: "10", color: colors.melrose},
 ]
 
@@ -47,7 +47,7 @@ export const aggressiveModel: IModelData[]  = [
     {symbol: "BND", cusip: "", weight: "5", color: colors.denim},
     {symbol: "XLK", cusip: "", weight: "15", color: colors.midnightBlue},
     {symbol: "SCHH", cusip: "", weight: "15", color: colors.purple},
-    {symbol: "CD's", cusip: "", weight: "5", color: colors.trueViolet},
+    {symbol: "CDs", cusip: "", weight: "5", color: colors.trueViolet},
     {symbol: "Commodities", cusip: "", weight: "0", color: colors.melrose},
 ]
 
@@ -61,7 +61,7 @@ export const incomeModel: IModelData[] = [
     {symbol: "BND", cusip: "", weight: "0", color: colors.denim},
     {symbol: "XLK", cusip: "", weight: "0", color: colors.midnightBlue},
     {symbol: "SCHH", cusip: "", weight: "15", color: colors.purple},
-    {symbol: "CD's", cusip: "", weight: "0", color: colors.trueViolet},
+    {symbol: "CDs", cusip: "", weight: "0", color: colors.trueViolet},
     {symbol: "Commodities", cusip: "", weight: "0", color: colors.melrose},
 ]
 
@@ -75,7 +75,7 @@ export const growthModel: IModelData[]  = [
     {symbol: "BND", cusip: "", weight: "0", color: colors.denim},
     {symbol: "XLK", cusip: "", weight: "40", color: colors.midnightBlue},
     {symbol: "SCHH", cusip: "", weight: "20", color: colors.purple},
-    {symbol: "CD's", cusip: "", weight: "0", color: colors.trueViolet},
+    {symbol: "CDs", cusip: "", weight: "0", color: colors.trueViolet},
     {symbol: "Commodities", cusip: "", weight: "0", color: colors.melrose},
 ]
 
