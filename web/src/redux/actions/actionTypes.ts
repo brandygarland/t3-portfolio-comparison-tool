@@ -1,7 +1,9 @@
-export const SLIDE_BOX = 'SLIDE BOX'
-export const STOP_BOX = 'STOP BOX'
-export const SPIN_LOGO_CHANGE = 'SPIN LOGO CHANGE'
-export const CHANGE_INPUT_VALUE = 'CHANGE INPUT VALUE'
-export const FETCH_SAMPLE = 'FETCH SAMPLE'
-export const FETCH_SAMPLE_SUCCESSFUL = 'FETCH SAMPLE SUCCESSFUL'
-export const FETCH_SAMPLE_FAILED = 'FETCH SAMPLE FAILED'
+export enum AppActions {
+    ChangeInputValue = 'CHANGE INPUT VALUE',
+
+    GetAssetsList = 'GET_ASSETS_LIST',
+    GetAssetsListSuccessful = 'GET_ASSETS_LIST_SUCCESSFUL',
+    GetAssetsListFailed = 'GET_ASSETS_LIST_FAILED',
+
+
+}

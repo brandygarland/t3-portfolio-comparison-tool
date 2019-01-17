@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { IApp } from '../../../../App'
+import SymbolSearchInputs from './SymbolSearchInput'
 
 interface IInputs extends IApp {
 
@@ -9,7 +10,7 @@ export default class ModelInputs extends React.PureComponent<IInputs> {
     render() {
         return (
             <>
-            this is where the inputs will go
+                <SymbolSearchInputs {...this.props}/>
 
                 <button 
                     className="btn btn-lg btn-primary"

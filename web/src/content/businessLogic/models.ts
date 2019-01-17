@@ -1,6 +1,4 @@
 import { colors } from "../common/colors";
-import { symbol, string } from "prop-types";
-import { IChartData } from "../components/Compare/components/CompareGrid";
 
 export interface IModelData{
     symbol: string;
@@ -78,7 +76,6 @@ export const growthModel: IModelData[]  = [
     {symbol: "CDs", cusip: "", weight: "0", color: colors.trueViolet},
     {symbol: "Commodities", cusip: "", weight: "0", color: colors.melrose},
 ]
-
 
 export const models = {
     conservative: [

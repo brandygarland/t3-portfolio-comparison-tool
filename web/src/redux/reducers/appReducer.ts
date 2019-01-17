@@ -2,7 +2,7 @@ import {appState, AppStateTypes} from '../store/templates/appState'
 
 import { LOCATION_CHANGE } from 'react-router-redux'
 import {
-    CHANGE_INPUT_VALUE, 
+   AppActions 
 } from '../actions/actionTypes'
 
 export default (state: AppStateTypes = appState, action) => {
@@ -16,7 +16,7 @@ export default (state: AppStateTypes = appState, action) => {
                 sampleData: null,
             }
         }
-        case CHANGE_INPUT_VALUE: {
+        case AppActions.ChangeInputValue: {
 
             if (action.group === 'model-compare') {
                 return {

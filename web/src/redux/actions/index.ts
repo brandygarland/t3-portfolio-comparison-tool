@@ -1,25 +1,16 @@
-import {
-    SLIDE_BOX,
-    SPIN_LOGO_CHANGE,
-    CHANGE_INPUT_VALUE,
-    FETCH_SAMPLE
-} from './actionTypes'
+import { AppActions } from './actionTypes'
 
-export const slideBox = () => {
-    return ({type: SLIDE_BOX})
-}
-
-export const spinLogoChange = () => {
-    return (dispatch, getState) => {
-        const spinChange = !(getState().appState.spinLogo)
-        dispatch({type: SPIN_LOGO_CHANGE, spinChange})
-    }
-}
 
 export const changeInputValue = (key, group, value) => {
-    return ({type: CHANGE_INPUT_VALUE, key, group, value})
+    return ({type: AppActions.ChangeInputValue, key, group, value})
 }
 
-export const fetchSampleData = () => {
-    return({type: FETCH_SAMPLE})
+
+export const triggerObservableAndChangeInputValue = (key, group, value) => {
+    if (group === 'model-creation' && key === 'symbol-search' && value.length > 1) {
+        return ({type: AppActions.GetAssetsList, key, group, value})
+    } else {
+        return null
+    }
+
 }
