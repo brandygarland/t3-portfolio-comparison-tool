@@ -1,0 +1,26 @@
+.label {
+  @include bold-font;
+  text-align: right;
+  width: 100px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.select {
+@include bold-font;
+  margin-left: 5px;
+  option{
+    @include bold-font;
+  }
+}
+
+.input {
+ @include input;
+}
+
+.inline-input-container{
+  width: 350px;
+  margin: auto;
+  text-align: left;
+  margin-top: 5px;
+}
