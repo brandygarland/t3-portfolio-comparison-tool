@@ -16,8 +16,8 @@ export const spinLogoChange = () => {
     }
 }
 
-export const changeInputValue = (key, value) => {
-    return ({type: CHANGE_INPUT_VALUE, key, value})
+export const changeInputValue = (key, group, value) => {
+    return ({type: CHANGE_INPUT_VALUE, key, group, value})
 }
 
 export const fetchSampleData = () => {

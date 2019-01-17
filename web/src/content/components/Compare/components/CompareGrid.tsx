@@ -1,10 +1,18 @@
 import * as React from 'react'
 import Chart from './PieChart';
 import Analytics from './Analytics';
+import { string } from 'prop-types';
+
+export interface IChartData {
+    title: string;
+    value: number;
+    color: string;
+}
 
 interface ICompareGrid {
     title: string;
     children: React.ReactNode,
+    data: IChartData[]
 }
 
 export default class CompareGrid extends React.PureComponent<ICompareGrid> {
@@ -13,15 +21,7 @@ export default class CompareGrid extends React.PureComponent<ICompareGrid> {
             <div className='compare-grid-container'>
                 <h3>{this.props.title}</h3>
                 <Chart
-                    data={[
-                        { title: 'One', value: 10, color: '#cb86d9' },
-                        { title: 'Two', value: 15, color: '#8777d6' },
-                        { title: 'Three', value: 10, color: '#2e70b4' },
-                        { title: 'Four', value: 20, color: '#56acdf' },
-                        { title: 'Five', value: 20, color: '#53a5a0' },
-                        { title: 'Six', value: 20, color: '#5db27b' },
-                        { title: 'Seven', value: 20, color: '#dda1ba' },
-                    ]}
+                    data={this.props.data}
                 />
                 {this.props.children}
                 <Analytics />
