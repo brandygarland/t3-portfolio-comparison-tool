@@ -19,8 +19,7 @@ export interface IMapDispatchToPropsApp {
     routeToLogIn: () => void;
     routeToCompare: () => void;
     comparePortfolios: () => void;
-    inputChange: (key: string, value: string) => (event: MouseEvent) => void;
-
+    inputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 const mapStateToProps = (state: IMapStateToPropsApp, ownProps) =>  {
@@ -40,8 +39,8 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
         comparePortfolios: () => {
             console.log('comparing....')
         },
-        inputChange: (key: string , value: string) => (event: MouseEvent) => {
-            dispatch(changeInputValue(key, value))
+        inputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+            dispatch(changeInputValue(key, group, event.target.value))
         },
     }
 }

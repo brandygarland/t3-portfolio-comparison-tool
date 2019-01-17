@@ -1,0 +1,18 @@
+export const colors = {
+    breakerBay: '#53a5a0',
+    lightForestGreen: '#5db27b',
+    summerGreen: '#95bea6',
+    morningGlory: '#a0cdca',
+    lightBlue: '#b2d9ef',
+    shakespeare: '#56acdf',
+    denim: '#2e70b4',
+    midnightBlue: '#1d4873',
+    purple: '#83568b',
+    trueViolet: '#8777d6',
+    melrose: '#bdb4e8',
+    frenchLilac: '#e2bdea',
+    paleChestnut: '#dda1ba',
+    carissma: '#dc7f9b',
+    brightLavender: '#cb86d9',
+    lightGray: '#D3D3D3',
+}

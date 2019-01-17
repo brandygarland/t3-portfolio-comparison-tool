@@ -1,4 +1,5 @@
 import * as React from 'react' 
+import LabelValuePair from './LabelValuePairs/LabelValuePair';
 
 interface IAnalytics {
 
@@ -18,24 +19,10 @@ export default class Analytics extends React.PureComponent<IAnalytics> {
         return (
             <div style={{margin: `20px auto`}}>
                 {analytics.map((analytic, index) => 
-                    <Analytic {...analytic} key={index}/>
+                    <LabelValuePair {...analytic} key={index}/>
                 )}
             </div>
 
         )
     }
-}
-
-interface IAnalytic {
-    label: string;
-    value: string;
-}
-
-const Analytic = (props: IAnalytic) => {
-    return (
-        <div style={{width: `310px`, margin: `auto`}}>
-            <label className={'bold-label'}>{props.label}:</label>
-            <label className={'value-label'}>{props.value}</label>
-        </div>
-    )
 }
