@@ -10,16 +10,16 @@ interface IAssetsReturned {}
 
 export interface IFinMasonService {
     analyzePortfolio: (portfolio: IPortfolio) => Observable<IPortfolioWithStats>;
-    searchAssetByTicker: (query: string) => Observable<IAssetsReturned>;
+    getAssets: (query: string) => Observable<IAssetsReturned>;
 
 }
 
-export default class FinMasonService implements IFinMasonService {
+class FinMasonService implements IFinMasonService {
     analyzePortfolio = (portfolio: IPortfolio) => 
         httpClient.post<IPortfolioWithStats>(this.analyzePortfolioUrl(), portfolio)
 
-    searchAssetByTicker = (query: string) => 
-        httpClient.get<IAssetsReturned>(this.getAssetsUrl(), {query})
+    getAssets = (query: string) => 
+        httpClient.get<IAssetsReturned>(this.getAssetsUrl(), { ticker: query })
 
     private analyzePortfolioUrl = () => `portfolio/analyze`
 
@@ -28,3 +28,5 @@ export default class FinMasonService implements IFinMasonService {
 
 
 }
+
+export default new FinMasonService()

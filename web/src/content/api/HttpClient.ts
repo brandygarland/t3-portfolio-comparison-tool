@@ -6,7 +6,8 @@ import FinMason from './Integrations/FinMason'
 const rxios = new Rxios({
     baseURL: process.env.FINMASON_API_HOST,
     headers: {
-        "Content-Type": 'application/json'
+        "Content-Type": 'application/json',
+        'User-Agent': 'Portfolio Managment Tool'
     },
 })
 
@@ -26,7 +27,6 @@ class HttpClient implements IHttpClient {
         this._httpClient.request({
             url, 
             params: {
-                signature: FinMason.getSignature('GET', url, queryParams), 
                 ...FinMason.getSignatureParams('GET', url, queryParams)
             },
             method: "GET",
@@ -36,7 +36,6 @@ class HttpClient implements IHttpClient {
         this._httpClient.request({
             url, 
             params: {
-                signature: FinMason.getSignature('POST', url, queryParams), 
                 ...FinMason.getSignatureParams('POST', url, queryParams)
             },
             method: "POST",

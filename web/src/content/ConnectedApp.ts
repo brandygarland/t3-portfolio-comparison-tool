@@ -2,13 +2,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import App from './App'
-import { IAppState } from '../redux/store/templates/appState'
-import { changeInputValue, triggerObservableAndChangeInputValue } from '../redux/actions/actionCreators'
+import { IAppState, IAsset } from '../redux/store/templates/appState'
+import { changeInputValue, triggerObservableAndChangeInputValue, chooseAsset } from '../redux/actions/actionCreators'
 import { Dispatch } from 'redux';
-
-interface mapStateToPropsTypes {
-    appState: IAppState;
-}
+import FinMason from './api/Integrations/FinMason';
 
 export interface IMapStateToPropsApp {
     appState: IAppState;
@@ -22,7 +19,7 @@ export interface IMapDispatchToPropsApp {
     analyzePortfolio: () => void;
     inputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     triggerObservableOnInputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-
+    chooseAsset: (asset: IAsset) => void;
 }
 
 const mapStateToProps = (state: IMapStateToPropsApp, ownProps) =>  {
@@ -40,7 +37,7 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
             dispatch(push('/compare'))
         },
         comparePortfolios: () => {
-            console.log('comparing....')
+            FinMason.getSignatureParams('GET', 'one', {test: 'one'})
         },
         analyzePortfolio: () => {
 
@@ -52,9 +49,13 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
             dispatch(changeInputValue(key, group, event.target.value))
             dispatch(triggerObservableAndChangeInputValue(key, group, event.target.value))
         },
+        chooseAsset: (asset: IAsset) => {
+            dispatch(chooseAsset(asset))
+        },
+
     }
 }
 
-const ConnectedSample = withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+const ConnectedApp = withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
 
-export default ConnectedSample
+export default ConnectedApp
