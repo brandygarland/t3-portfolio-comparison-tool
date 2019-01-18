@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { IApp } from '../../App'
 import CompareGrid, { IChartData } from './components/CompareGrid';
-import Models from './Models';
+import Models from './components/Models';
 import ModelInputs from './components/ModelInputs/ModelInputs';
 import { models, mapModelToPieChart } from '../../businessLogic/models';
 import { colors } from '../../common/colors';

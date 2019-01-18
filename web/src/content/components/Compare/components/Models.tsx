@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { IApp } from '../../App'
-import { models } from '../../businessLogic/models'
-import LabelValuePairWithColorDot from './components/LabelValuePairs/LabelValuePairWithColorDot'
-import { colors } from '../../common/colors';
+import { IApp } from '../../../App'
+import { models } from '../../../businessLogic/models'
+import LabelValuePairWithColorDot from './LabelValuePairs/LabelValuePairWithColorDot'
 
 interface IModels extends IApp {
 
@@ -57,9 +56,7 @@ export default class Models extends React.PureComponent<IModels, IModelsState> {
                                     <LabelValuePairWithColorDot {...labelValuePair} key={index} />
                                 )
                             } else {
-                                return (
-                                    <></>
-                                )
+                                return null
                             }
                            
                         })}

@@ -2,16 +2,16 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import App from './App'
-import {AppStateTypes} from '../redux/store/templates/appState'
-import { changeInputValue, triggerObservableAndChangeInputValue } from '../redux/actions/index'
+import { IAppState } from '../redux/store/templates/appState'
+import { changeInputValue, triggerObservableAndChangeInputValue } from '../redux/actions/actionCreators'
 import { Dispatch } from 'redux';
 
 interface mapStateToPropsTypes {
-    appState: AppStateTypes;
+    appState: IAppState;
 }
 
 export interface IMapStateToPropsApp {
-    appState: AppStateTypes;
+    appState: IAppState;
 
 }
 
@@ -19,6 +19,7 @@ export interface IMapDispatchToPropsApp {
     routeToLogIn: () => void;
     routeToCompare: () => void;
     comparePortfolios: () => void;
+    analyzePortfolio: () => void;
     inputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     triggerObservableOnInputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 
@@ -40,6 +41,9 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
         },
         comparePortfolios: () => {
             console.log('comparing....')
+        },
+        analyzePortfolio: () => {
+
         },
         inputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
             dispatch(changeInputValue(key, group, event.target.value))

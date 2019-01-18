@@ -5,24 +5,24 @@ const SIGNATURE_METHOD = "HmacSHA256"
 const SIGNATURE_VERSION = "2"
 
 interface IFinMason {
-    getSignature: () => string;
-    getSignatureParams: () => string ;
+    getSignature: (httpMethod: string, apiPath: string, parameters: Object) => string;
+    getSignatureParams: (httpMethod: string, apiPath: string, parameters: Object) => Object;
 
 }
 
-export class FinMason implements IFinMason {
-    constructor(httpMethod: string, apiPath: string, parameters: Object) {
-        this._requestPath = `/v2/${apiPath}`
-    }
-    
+class FinMason implements IFinMason {
     private _requestPath: string;
 
-    public getSignature = (): string => {
+    public getSignature = (httpMethod: string, apiPath: string, parameters: Object): string => {
+        this._requestPath = `/v2/${apiPath}`
         return ""
     }
 
-    public getSignatureParams = (): string => {
-        return ""
+    public getSignatureParams = (httpMethod: string, apiPath: string, parameters: Object): Object => {
+        this._requestPath = `/v2/${apiPath}`
+        return {
+            
+        }
     }
 
     private buildQueryString 
@@ -30,3 +30,5 @@ export class FinMason implements IFinMason {
 
 
 }
+
+export default new FinMason()

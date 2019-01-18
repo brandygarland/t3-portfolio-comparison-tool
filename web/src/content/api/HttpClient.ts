@@ -1,6 +1,7 @@
-import { Observable } from 'rxjs';
-import { AxiosRequestConfig } from 'axios';
+import { Observable } from 'rxjs'
+import { AxiosRequestConfig } from 'axios'
 import { Rxios } from 'rxios'
+import FinMason from './Integrations/FinMason'
 
 const rxios = new Rxios({
     baseURL: process.env.FINMASON_API_HOST,
@@ -25,8 +26,8 @@ class HttpClient implements IHttpClient {
         this._httpClient.request({
             url, 
             params: {
-                signature: "FinMason.getSignature()", 
-                
+                signature: FinMason.getSignature('GET', url, queryParams), 
+                ...FinMason.getSignatureParams('GET', url, queryParams)
             },
             method: "GET",
         } as AxiosRequestConfig)
@@ -35,10 +36,12 @@ class HttpClient implements IHttpClient {
         this._httpClient.request({
             url, 
             params: {
-                signature: "GET FROM FM", 
-                
+                signature: FinMason.getSignature('POST', url, queryParams), 
+                ...FinMason.getSignatureParams('POST', url, queryParams)
             },
             method: "POST",
         } as AxiosRequestConfig)
 
 }
+
+export default new HttpClient(rxios)

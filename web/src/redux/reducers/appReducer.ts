@@ -1,11 +1,11 @@
-import {appState, AppStateTypes} from '../store/templates/appState'
+import {appState, IAppState} from '../store/templates/appState'
 
 import { LOCATION_CHANGE } from 'react-router-redux'
 import {
    AppActions 
 } from '../actions/actionTypes'
 
-export default (state: AppStateTypes = appState, action) => {
+export default (state: IAppState = appState, action) => {
     switch (action.type) {
         case LOCATION_CHANGE: {
             return {

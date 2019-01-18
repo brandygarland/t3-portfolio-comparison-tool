@@ -1,8 +1,6 @@
-export const appState: AppStateTypes = {
+export const appState:IAppState = {
     inputs: {
-        name: '',
-        age: null,
-        favoriteColor: '',
+        symbolSearch: '',
     },
     modelToUse: null,
     assetList: [
@@ -14,17 +12,18 @@ export const appState: AppStateTypes = {
     ]
 }
 
-export interface AppStateTypes {
+export interface IAppState {
 
     inputs: InputTypes;
     modelToUse: string;
-    assetList: {name: string; }[]
+    assetList: IAsset[]
 
 }
 
-export interface InputTypes {
+export interface IAsset {
     name: string;
-    age: number;
-    favoriteColor: string;
+}
 
+export interface InputTypes {
+   symbolSearch: string;
 }
