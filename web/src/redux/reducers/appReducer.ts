@@ -43,6 +43,14 @@ export default (state: IAppState = appState, action) => {
             }
             
         }
+        case AppActions.ChooseAsset: {
+            const currentPositions = state.assetList
+            console.log(action.asset)
+            return {
+                ...state,
+                
+            }
+        }
         default: {
             return state
         }

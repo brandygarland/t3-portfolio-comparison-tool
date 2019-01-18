@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
             dispatch(push('/compare'))
         },
         comparePortfolios: () => {
-            FinMason.getSignatureParams('GET', 'one', {test: 'one'})
+            
         },
         analyzePortfolio: () => {
 
