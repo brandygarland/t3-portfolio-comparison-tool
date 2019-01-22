@@ -34,7 +34,12 @@ class FinMasonRepeaterClient extends HttpClient {
                 config: JSON.stringify({
                     url: this.baseURL+url, 
                     params: {
-                        ...FinMason.getSignatureParams('POST', url, queryParams)
+                        ...FinMason.getSignatureParams('POST', url, {})
+                    },
+                    data: queryParams,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Content-Length': JSON.stringify(queryParams).length
                     },
                     method: "POST",
                 } as AxiosRequestConfig)

@@ -3,7 +3,10 @@ import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import App from './App'
 import { IAppState, IAsset, IPosition } from '../redux/store/templates/appState'
-import { changeInputValue, triggerObservableAndChangeInputValue, chooseAsset, removePosition } from '../redux/actions/actionCreators'
+import { 
+    changeInputValue, triggerObservableAndChangeInputValue, 
+    chooseAsset, removePosition, analyzePortfolio 
+} from '../redux/actions/actionCreators'
 import { Dispatch } from 'redux';
 
 export interface IMapStateToPropsApp {
@@ -37,7 +40,7 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
             dispatch(push('/compare'))
         },
         comparePortfolios: () => {
-            console.log('this should dispatch the analyze portfolio call.')
+            dispatch(analyzePortfolio())
         },
         inputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
             dispatch(changeInputValue(key, group, event.target.value))

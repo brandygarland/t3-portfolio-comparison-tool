@@ -17,7 +17,7 @@ IRootState>
         switchMap(() => 
             FinMasonService.analyzePortfolio({
                 positions: [...state$.value.appState.positions],
-                portfolioStats: ["finscore"]
+                portfolio_stats: ['finscore', 'sharpe_hyb_fb_20yr', 'asset_class']
             }).mergeMap(response => of(
                 {type: AppActions.AnalyzePortfolioSuccessful, analyzedPortfolio: response} as IPortfolioAnalyzeSuccessful
             )).catch(error => of(

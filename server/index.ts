@@ -36,19 +36,6 @@ type HttpsConfig = {
 
         // repeater for CORS requests
         app.get('/repeater', (expressRequest, expressResponse) => {
-            // const config = JSON.parse(expressRequest.query.config) as HttpsConfig
-            // let proxiedRequest = https.request(config, (proxiedResponse) => {
-            //     let data = '';
-            //     proxiedResponse.on('data', (chunk) => { data += chunk; });
-            //     proxiedResponse.on('end', () => {
-            //         expressResponse.send(data)
-            //     })
-            // })
-            // proxiedRequest.on('error', (error) => {
-            //     expressResponse.error(error)
-            // })
-            // proxiedRequest.end()
-
             const config = JSON.parse(expressRequest.query.config) as AxiosRequestConfig
 
             axios.request(config).then(response => {

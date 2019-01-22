@@ -22,6 +22,7 @@ export default class SymbolSearchInputs extends React.PureComponent<ISymbolSearc
                         value={symbolSearch}
                         onChange={this.props.triggerObservableOnInputChange('symbolSearch', 'model-creation')}
                         style={{width: `200px`, margin:`0`, display:`inline-block`}}
+                        placeholder='Search symbols...'
                     />
                     <select
                         className={'form-control'}
