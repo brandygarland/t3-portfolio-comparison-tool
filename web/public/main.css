@@ -35,6 +35,7 @@
   vertical-align: middle; }
 
 .asset-card {
+  width: 390px;
   height: auto;
   min-height: 20px;
   border-bottom: solid lightgray 1px;

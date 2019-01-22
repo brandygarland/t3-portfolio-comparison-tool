@@ -39,15 +39,9 @@ export default (state: IAppState = appState, action) => {
             
         }
         case AppActions.GetAssetsListSuccessful: {
-            let value = [{name: 'No Security Found'}]
+            let value = [{name: 'Not Found'}]
             if (action.searchResults.assets) {
-                value = action.searchResults.assets.sort(function(a, b){
-                    if (a.ticker.length <= b.ticker.length) {
-                        return a
-                    } else {
-                        return b
-                    }
-                })
+                value = action.searchResults.assets
             }
             return {
                 ...state,
