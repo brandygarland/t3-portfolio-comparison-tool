@@ -11,32 +11,36 @@ interface IInputs extends IApp {
 export default class ModelInputs extends React.PureComponent<IInputs> {
     render() {
         const { positions } = this.props.appState
-        let weight = 0;
+        let value = 0;
         this.props.appState.positions.forEach(position => {
-            weight += Number(position.weight)
+            value += Number(position.value)
         })
         return (
             <>
-                {positions.map((position, index) => {
-                    let positionInLabelInputPairFormat = {
-                        label: position.ticker,
-                        color: colorsArray[index],
-                        value: this.props.appState.positions[index].weight.toString(),
-                        index,
-                        onChange: this.props.inputChange(`${index}`, 'positions-value'),
-                        onClick: this.props.removePosition(position)
-                    }
-
-                    return (
-                        <LabelInputPairWithColorDot {...positionInLabelInputPairFormat} key={index} />
-                    )
-                })}
                 <SymbolSearchInputs {...this.props}/>
+                <div style={{margin: `20px auto 10px auto`}}>
+                    {positions.map((position, index) => {
+                        let positionInLabelInputPairFormat = {
+                            label: position.ticker,
+                            color: colorsArray[index],
+                            value: this.props.appState.positions[index].value.toString(),
+                            index,
+                            onChange: this.props.inputChange(`${index}`, 'positions-value'),
+                            onClick: this.props.removePosition(position)
+                        }
+
+                        return (
+                            <LabelInputPairWithColorDot {...positionInLabelInputPairFormat} key={index} />
+                        )
+                    })}
+                </div>
+                
+               
                 <button 
                     className="btn btn-lg btn-primary"
                     style={{display: `block`, margin: `10px auto`}}
                     onClick={this.props.comparePortfolios}
-                    disabled={weight !== 100}
+                    disabled={value !== 100}
                 >
                     Compare Portfolios
                 </button>

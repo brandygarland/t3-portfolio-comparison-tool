@@ -1,5 +1,6 @@
 import { string } from "prop-types";
 import { instruments } from "../../../content/businessLogic/instruments"
+import { mapModelToPositionObject, conservativeModel, moderateModel, aggressiveModel, incomeModel, growthModel } from "../../../content/businessLogic/models";
 
 export const appState:IAppState = {
     inputs: {
@@ -10,8 +11,18 @@ export const appState:IAppState = {
     assetList: [
     
     ],
+    models: {
+        conservative: mapModelToPositionObject(conservativeModel),
+        moderate: mapModelToPositionObject(moderateModel),
+        aggresive: mapModelToPositionObject(aggressiveModel),
+        income: mapModelToPositionObject(incomeModel),
+        growth: mapModelToPositionObject(growthModel),
+
+    },
     positions: [],
-    instruments: [...instruments]
+    instruments: [...instruments],
+    analytics: null,
+
         
 }
 
@@ -20,8 +31,11 @@ export interface IAppState {
     inputs: InputTypes;
     modelToUse: string;
     assetList: IAsset[];
+    models: IModel;
     positions: IPosition[];
     instruments: IInstrument[];
+    analytics: IAnalytics;
+
 }
 
 export interface IAsset {
@@ -46,17 +60,32 @@ export interface IAsset {
 
 }
 
+export interface IModel {
+    conservative: IPosition[];
+    moderate: IPosition[];
+    aggresive: IPosition[];
+    income: IPosition[];
+    growth: IPosition[];
+}
+
 export interface IPosition {
     ticker: string; 
     weight: number;
     cusip?: string;
     isin?: string;
     sedol?: string;
+    value: number;
+    quantity?: number;
 }
 
 export interface IInstrument {
     code: string;
     description: string;
+}
+
+export interface IAnalytics {
+    finscore: number;
+    sharpe_hyb_fb_20yr: number;
 }
 
 export interface InputTypes {

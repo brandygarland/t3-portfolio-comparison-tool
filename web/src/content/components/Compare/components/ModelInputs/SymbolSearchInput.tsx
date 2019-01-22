@@ -23,13 +23,15 @@ export default class SymbolSearchInputs extends React.PureComponent<ISymbolSearc
                         onChange={this.props.triggerObservableOnInputChange('symbolSearch', 'model-creation')}
                         style={{width: `200px`, margin:`0`, display:`inline-block`}}
                         placeholder='Search symbols...'
+                        disabled={this.props.appState.positions.length >= 15}
                     />
                     <select
                         className={'form-control'}
                          id={'chosenInstrument'} 
                          value={chosenInstrument}
                          onChange={this.props.triggerObservableOnInputChange('chosenInstrument', 'model-creation')}
-                         style={{width: `200px`, margin:`0 0 0 10px`, display:`inline-block`}}
+                         style={{width: `200px`, margin:`0 0 0 10px`, display:`inline-block`, height: `35px`}}
+                         disabled={this.props.appState.positions.length >= 15}
                     >
                         {this.props.appState.instruments.map((instrument, index) => 
                             <option key={index} value={instrument.code}>{instrument.description}</option>
@@ -70,9 +72,14 @@ const AssetCard = (props: IAssetCard) => {
             type = 'SEDOL'
         }
     }
+    let click = onClick(props)
     
+    if (assetCusipSedolOrIsin === undefined) {
+        click = () => null
+    }
+
     return (
-        <div className='asset-card' onClick={onClick(props)}>
+        <div className='asset-card' onClick={click}>
             <span className='asset-span name-span'>{name}</span>
             {ticker && <span className='asset-span ticker-span'>{ticker}</span>}
             {category && <span className='asset-span'>{category} - {cluster}</span>}

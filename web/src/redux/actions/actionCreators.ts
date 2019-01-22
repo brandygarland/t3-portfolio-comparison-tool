@@ -33,7 +33,7 @@ export const changeInputValue = (key, group, value) => {
 
 
 export const triggerObservableAndChangeInputValue = (key, group, value) => {
-    if (group === 'model-creation' && (key === 'symbolSearch' && value.length > 1) || (key === 'chosenInstrument')) {
+    if (group === 'model-creation' && (key === 'symbolSearch' && value.length > 0) || (key === 'chosenInstrument')) {
         return ({type: AppActions.GetAssetsList, key, group, value})
     } 
     else {

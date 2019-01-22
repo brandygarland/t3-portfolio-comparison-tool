@@ -21,7 +21,7 @@ export default (state: IAppState = appState, action) => {
                 }
             } else if (action.group === 'positions-value') {
                 const currentPositions = state.positions
-                currentPositions[action.key].weight = action.value
+                currentPositions[action.key].value = action.value
                 
                 return {
                     ...state,
@@ -57,13 +57,17 @@ export default (state: IAppState = appState, action) => {
                 isin: action.asset.isin,
                 sedol: action.asset.sedol,
                 weight: 0,
+                value: 0,
             }
 
             currentPositions.push(formattedPosition)
 
             return {
                 ...state,
-                inputs: appState.inputs,
+                inputs: {
+                    ...state.inputs, 
+                    symbolSearch: appState.inputs.symbolSearch,
+                },
                 positions: currentPositions
             }
         }
@@ -78,6 +82,12 @@ export default (state: IAppState = appState, action) => {
                 ...state,
                 positions: newPostions
             }
+        }
+        case AppActions.AnalyzePortfolioSuccessful: {
+            return {
+                ...state,
+                analytics: action.analyzedPortfolio.stats
+            }   
         }
         default: {
             return state

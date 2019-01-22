@@ -11,7 +11,7 @@ interface ILabelInputPairWithColorDot extends ILabelValuePair {
 const LabelInputPairWithColorDot = (props: ILabelInputPairWithColorDot) => {
     const {color, label, onChange, value} = props
     return (
-        <div style={{width: `350px`, margin: `auto`}}>
+        <div style={{width: `350px`, margin: `auto`, marginBottom: `10px`}}>
             <div className={'color-dot'} style={{backgroundColor: `${color}`}}/> 
             <label className={'bold-label'} style={{width: `150px`, display: `inline-block`}} >{label}:</label>
             <input 

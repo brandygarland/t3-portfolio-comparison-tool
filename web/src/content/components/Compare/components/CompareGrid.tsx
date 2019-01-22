@@ -2,6 +2,7 @@ import * as React from 'react'
 import Chart from './PieChart';
 import Analytics from './Analytics';
 import { string } from 'prop-types';
+import { IAnalytics } from '../../../../redux/store/templates/appState';
 
 export interface IChartData {
     title: string;
@@ -13,6 +14,8 @@ interface ICompareGrid {
     title: string;
     children: React.ReactNode,
     data: IChartData[]
+    analytics?: IAnalytics;
+    message?: string;
 }
 
 export default class CompareGrid extends React.PureComponent<ICompareGrid> {
@@ -24,7 +27,10 @@ export default class CompareGrid extends React.PureComponent<ICompareGrid> {
                     data={this.props.data}
                 />
                 {this.props.children}
-                <Analytics />
+                <Analytics 
+                    analytics={this.props.analytics}
+                    message={this.props.message}
+                />
 
             </div>
         )
