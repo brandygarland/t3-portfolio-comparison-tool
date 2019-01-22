@@ -1,0 +1,36 @@
+import { IInstrument } from '../../redux/store/templates/appState'
+
+export const instruments: IInstrument[] = [
+    {code: '', description: 'ALL'},
+    {code:'INF', description: 'Inflation Protected'},
+    {code:'UIT', description: 'Unit Investment Trust'},
+    {code:'B', description: 'Bond'},
+    {code:'C', description: 'Cash'},
+    {code:'F', description: 'Futures'},
+    {code:'ELN', description: 'Equity Linked Note'},
+    {code:'I', description: 'Index'},
+    {code:'DR', description: 'Depository Receipt'},
+    {code:'O', description: 'Option'},
+    {code:'PFD', description: 'Preferred Stock'},
+    {code:'STR', description: 'Strip'},
+    {code:'FX', description: 'Foreign Exchange'},
+    {code:'S', description: 'Stock'},
+    {code:'ETFNAV', description: 'ETF NAV'},
+    {code:'W', description: 'Warrant'},
+    {code:'MF', description: 'Mutual Fund'},
+    {code:'RIGHT', description: 'Right'},
+    {code:'HYBRID', description: 'Structured/Hybrid Product'},
+    {code:'CB', description: 'Convertible Bond'},
+    {code:'MM', description: 'Money Market Instrument'},
+    {code:'SAVBOND', description: 'Savings Bond'},
+    {code:'CD', description: 'CD'},
+    {code:'CEF', description: 'Closed End Fund'},
+    {code:'TBILL', description: 'TBill'},
+    {code:'CP', description: 'Commercial Paper'},
+    {code:'ETF', description: 'Exchange Traded Fund'},
+    {code:'ZCB', description: 'Zero Coupon Issue'},
+    {code:'ETN', description: 'Exchange Traded Note'},
+    {code:'CVR', description: 'Contingent Value Right'},
+    {code:'HF', description: 'Hedge Fund'}
+]
+

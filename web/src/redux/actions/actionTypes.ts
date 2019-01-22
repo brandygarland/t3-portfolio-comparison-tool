@@ -6,6 +6,8 @@ export enum AppActions {
     GetAssetsListFailed = 'GET_ASSETS_LIST_FAILED',
 
     ChooseAsset = 'CHOOSE_ASSET',
+    RemovePosition = 'REMOVE_POSITION',
+
 
     AnalyzePortfolio = 'ANALYZE_PORTFOLIO',
     AnalyzePortfolioSuccessful = 'ANALYZE_PORTFOLIO_SUCCESSFUL',

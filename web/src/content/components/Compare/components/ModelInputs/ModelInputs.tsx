@@ -11,15 +11,20 @@ interface IInputs extends IApp {
 export default class ModelInputs extends React.PureComponent<IInputs> {
     render() {
         const { positions } = this.props.appState
+        let weight = 0;
+        this.props.appState.positions.forEach(position => {
+            weight += Number(position.weight)
+        })
         return (
             <>
                 {positions.map((position, index) => {
                     let positionInLabelInputPairFormat = {
-                        label: position.symbol,
+                        label: position.ticker,
                         color: colorsArray[index],
-                        value: this.props.appState.positions[index].value,
+                        value: this.props.appState.positions[index].weight.toString(),
                         index,
                         onChange: this.props.inputChange(`${index}`, 'positions-value'),
+                        onClick: this.props.removePosition(position)
                     }
 
                     return (
@@ -31,6 +36,7 @@ export default class ModelInputs extends React.PureComponent<IInputs> {
                     className="btn btn-lg btn-primary"
                     style={{display: `block`, margin: `10px auto`}}
                     onClick={this.props.comparePortfolios}
+                    disabled={weight !== 100}
                 >
                     Compare Portfolios
                 </button>

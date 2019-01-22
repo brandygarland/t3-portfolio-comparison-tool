@@ -4,8 +4,15 @@ import * as bodyParser from 'body-parser'
 import {logger} from './util/Logger'
 import {InversifyExpressServer} from 'inversify-express-utils'
 import axios, { AxiosRequestConfig } from 'axios'
+import * as https from 'https'
 import path = require('path')
 import { Container } from 'inversify'
+
+type HttpsConfig = {
+    hostname: string;
+    path: string;
+    method: 'POST' | 'GET';
+};
 
 (async () => {
     const container = new Container()
@@ -28,16 +35,26 @@ import { Container } from 'inversify'
         app.use(express.static(path.join(__dirname, '../web/public')))
 
         // repeater for CORS requests
-        app.get('/repeater', (req, res) => {
-            const keys = Object.keys(req.headers)
-            let config = {} as AxiosRequestConfig
-            keys.map(key => {
-                config[key] = req.headers[key]
-            })
+        app.get('/repeater', (expressRequest, expressResponse) => {
+            // const config = JSON.parse(expressRequest.query.config) as HttpsConfig
+            // let proxiedRequest = https.request(config, (proxiedResponse) => {
+            //     let data = '';
+            //     proxiedResponse.on('data', (chunk) => { data += chunk; });
+            //     proxiedResponse.on('end', () => {
+            //         expressResponse.send(data)
+            //     })
+            // })
+            // proxiedRequest.on('error', (error) => {
+            //     expressResponse.error(error)
+            // })
+            // proxiedRequest.end()
+
+            const config = JSON.parse(expressRequest.query.config) as AxiosRequestConfig
+
             axios.request(config).then(response => {
-                res.send(response.data)
+                expressResponse.send(response.data)
             }).catch(error => {
-                res.status(400).send(error.data)
+                expressResponse.status(error.status || 500).send(error.data || 'Internal Server Error')
             })
         })
         app.get('*', (req, res) => {
@@ -52,3 +69,39 @@ import { Container } from 'inversify'
         logger.info('Listening on port 8081!')
     })
 })()
+
+// Submit HTTP request to the server
+function submit_request(http_method, api_host, request_path, query_string, payload) {
+    let full_request_path = `${request_path}?${query_string}`;
+    
+    let headers = {
+        'User-Agent': 'FinMason NodeJS Example Client/2.0.1'
+    };
+    if (('POST' === http_method) && (null != payload)) {
+        headers['Content-Type']   = 'application/json; charset=utf-8';
+        headers['Content-Length'] = payload.length
+    };
+    let http_opts = {
+        headers:  headers,
+        hostname: api_host,
+        method:   http_method,
+        path:     full_request_path,
+        port:     443,
+        protocol: 'https:' // SSL is required for all requests
+    };
+
+    let req = https.request(http_opts, (res) => {
+
+        let data = '';
+        res.on('data', (chunk) => { data += chunk; });
+        res.on('end', () => {
+            process.exit(0);
+        });
+    });
+    req.on('error', (er) => {
+        process.exit(1);
+    });
+    req.write(payload);
+    req.end();
+};
+

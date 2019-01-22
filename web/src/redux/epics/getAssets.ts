@@ -5,7 +5,7 @@ import { AppActions } from '../actions/actionTypes'
 import 'rxjs/add/operator/mergeMap'
 import 'rxjs/add/operator/catch';
 import { IRootState } from '../reducers/IRootState';
-import { IPortfolioAnalyze, IGetAssets } from '../actions/actionCreators';
+import { IGetAssets, IGetAssetsSuccessful, IGetAssetsFailed } from '../actions/actionCreators';
 import FinMasonService from '../../content/api/Integrations/FinMasonService';
 
 const getAssets: Epic <
@@ -17,10 +17,11 @@ IRootState>
         switchMap(() => 
             FinMasonService.getAssets(
                 state$.value.appState.inputs.symbolSearch,
+                state$.value.appState.inputs.chosenInstrument || '',
             ).mergeMap(response => of(
-                {type: AppActions.GetAssetsListSuccessful, analyzedPortfolio: response}
+                {type: AppActions.GetAssetsListSuccessful, searchResults: response} as IGetAssetsSuccessful,
             )).catch(error => of(
-                {type: AppActions.GetAssetsListFailed}
+                {type: AppActions.GetAssetsListFailed} as IGetAssetsFailed,
             ))
         )
     )

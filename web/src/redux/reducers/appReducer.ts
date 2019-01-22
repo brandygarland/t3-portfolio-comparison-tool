@@ -4,17 +4,12 @@ import { LOCATION_CHANGE } from 'react-router-redux'
 import {
    AppActions 
 } from '../actions/actionTypes'
-import { chooseAsset } from '../actions/actionCreators';
 
 export default (state: IAppState = appState, action) => {
     switch (action.type) {
         case LOCATION_CHANGE: {
             return {
                 ...state,
-                showNavigateButton: action.payload.pathname === '/',
-                moveBox: false,
-                isSearching: false,
-                sampleData: null,
             }
         }
         case AppActions.ChangeInputValue: {
@@ -26,7 +21,7 @@ export default (state: IAppState = appState, action) => {
                 }
             } else if (action.group === 'positions-value') {
                 const currentPositions = state.positions
-                currentPositions[action.key].value = action.value
+                currentPositions[action.key].weight = action.value
                 
                 return {
                     ...state,
@@ -43,12 +38,51 @@ export default (state: IAppState = appState, action) => {
             }
             
         }
-        case AppActions.ChooseAsset: {
-            const currentPositions = state.assetList
-            console.log(action.asset)
+        case AppActions.GetAssetsListSuccessful: {
+            let value = [{name: 'No Security Found'}]
+            if (action.searchResults.assets) {
+                value = action.searchResults.assets.sort(function(a, b){
+                    if (a.ticker.length <= b.ticker.length) {
+                        return a
+                    } else {
+                        return b
+                    }
+                })
+            }
             return {
                 ...state,
-                
+                assetList: value
+            }
+        }
+        case AppActions.ChooseAsset: {
+            let currentPositions = state.positions
+            
+            let formattedPosition = {
+                ticker: action.asset.ticker,
+                cusip: action.asset.cusip,
+                isin: action.asset.isin,
+                sedol: action.asset.sedol,
+                weight: 0,
+            }
+
+            currentPositions.push(formattedPosition)
+
+            return {
+                ...state,
+                inputs: appState.inputs,
+                positions: currentPositions
+            }
+        }
+
+        case AppActions.RemovePosition: {
+            let currentPositions = state.positions
+            let newPostions = currentPositions.filter(postion => 
+                postion !== action.position
+            )
+
+            return {
+                ...state,
+                positions: newPostions
             }
         }
         default: {

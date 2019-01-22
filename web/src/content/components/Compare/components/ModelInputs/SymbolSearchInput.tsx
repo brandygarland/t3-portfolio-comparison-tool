@@ -1,27 +1,16 @@
 import * as React from 'react'
 import { IApp } from '../../../../App'
 import { colors } from '../../../../common/colors'
+import { IAsset } from '../../../../../redux/store/templates/appState'
 
 interface ISymbolSearchInputs extends IApp {
 
 }
 
 export default class SymbolSearchInputs extends React.PureComponent<ISymbolSearchInputs> {
-
-    chooseSecurity = (id: string) => () => {
-        console.log(id)
-    } 
-
     render() {
-        const { symbolSearch } = this.props.appState.inputs
-        const assetList = [
-            {name: 'test', id: '1'},
-            {name: 'test', id: '2'},
-            {name: 'test', id: '3'},
-            {name: 'test', id: '4'},
-            {name: 'test', id: '5'},
-            {name: 'test', id: '6'},
-        ]
+        const { symbolSearch, chosenInstrument } = this.props.appState.inputs
+        const assetList = this.props.appState.assetList
         return (
         <div style={{margin: `20px auto 0px auto`}}>
 
@@ -32,32 +21,62 @@ export default class SymbolSearchInputs extends React.PureComponent<ISymbolSearc
                         id={'symbolSearch'} 
                         value={symbolSearch}
                         onChange={this.props.triggerObservableOnInputChange('symbolSearch', 'model-creation')}
-                        style={{width: `200px`, margin:`scroll`}}
+                        style={{width: `200px`, margin:`0`, display:`inline-block`}}
                     />
-                    {symbolSearch.length > 0 && 
+                    <select
+                        className={'form-control'}
+                         id={'chosenInstrument'} 
+                         value={chosenInstrument}
+                         onChange={this.props.triggerObservableOnInputChange('chosenInstrument', 'model-creation')}
+                         style={{width: `200px`, margin:`0 0 0 10px`, display:`inline-block`}}
+                    >
+                        {this.props.appState.instruments.map((instrument, index) => 
+                            <option key={index} value={instrument.code}>{instrument.description}</option>
+                        )}
+                    </select>
+                    
+                    {(assetList.length > 0 && symbolSearch.length > 0) && 
                         <div style={{maxHeight: `180px`, overflowY: `auto`, border: `1px lightgray solid`}}>
                             {assetList.map((asset, index) => 
-                                <AssetCard {...asset} key={index} onClick={this.chooseSecurity} />
+                                <AssetCard {...asset} key={index} onClick={this.props.chooseAsset} />
                             )}
                         </div>
                     }
+                    
                 </div>
+                
             </div>
         )
     }
 }
 
-interface IAssetCard {
-    onClick: (id: string) => () => void;
-    name: string;
-    id: string;
+interface IAssetCard extends IAsset {
+    onClick: (asset: IAsset) => () => void
+    
 }
 
 const AssetCard = (props: IAssetCard) => {
-    const { name, onClick, id } = props
+    const { name, onClick, category, cluster, geography, cusip, isin, sedol, ticker } = props
+    
+    let assetCusipSedolOrIsin = cusip || isin || sedol
+    let type = 'CUSIP'
+    
+    if (!cusip) {
+        if (isin) {
+            type = 'ISIN'
+        }
+        if (sedol) {
+            type = 'SEDOL'
+        }
+    }
+    
     return (
-        <div className='asset-card' onClick={onClick(id)}>
-            asset {name}
+        <div className='asset-card' onClick={onClick(props)}>
+            <span className='asset-span name-span'>{name}</span>
+            {ticker && <span className='asset-span ticker-span'>{ticker}</span>}
+            {category && <span className='asset-span'>{category} - {cluster}</span>}
+            {assetCusipSedolOrIsin && <span className='asset-span'>{geography} - {type}: {assetCusipSedolOrIsin}</span>}
+
         </div>
     )
 }

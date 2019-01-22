@@ -4,10 +4,9 @@ import { Rxios } from 'rxios'
 import FinMason from './Integrations/FinMason'
 
 const rxios = new Rxios({
-    baseURL: process.env.FINMASON_API_HOST,
+    baseURL: 'https://' + process.env.FINMASON_API_HOST + '/v2/',
     headers: {
-        "Content-Type": 'application/json',
-        'User-Agent': 'Portfolio Managment Tool'
+        'Content-Type': 'application/json',
     },
 })
 
@@ -16,12 +15,12 @@ interface IHttpClient {
     post<T>(url: string, body: Object, queryParams?: Object): Observable<T>;
 }
 
-class HttpClient implements IHttpClient {
+export class HttpClient implements IHttpClient {
     constructor(rxios: Rxios) {
         this._httpClient = rxios
     }
 
-    private _httpClient: Rxios
+    protected _httpClient: Rxios
 
     get = <T>(url: string, queryParams?: Object): Observable<T> =>
         this._httpClient.request({
