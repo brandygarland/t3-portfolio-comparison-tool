@@ -39,7 +39,7 @@ export default class SymbolSearchInputs extends React.PureComponent<ISymbolSearc
                     </select>
                     
                     {(assetList.length > 0 && symbolSearch.length > 0) && 
-                        <div style={{maxHeight: `180px`, overflowY: `auto`, border: `1px lightgray solid`}}>
+                        <div style={{maxHeight: `180px`, overflowY: `auto`, border: `1px lightgray solid`, position: `absolute`, backgroundColor: `white`, zIndex: 10}}>
                             {assetList.map((asset, index) => 
                                 <AssetCard {...asset} key={index} onClick={this.props.chooseAsset} />
                             )}

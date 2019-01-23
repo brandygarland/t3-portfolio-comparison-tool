@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Chart from './PieChart';
 import Analytics from './Analytics';
-import { string } from 'prop-types';
 import { IAnalytics } from '../../../../redux/store/templates/appState';
 
 export interface IChartData {

@@ -5,6 +5,18 @@ import {
    AppActions 
 } from '../actions/actionTypes'
 
+const compare = (a,b) => {
+    if (!a.ticker || !b.ticker) {
+        return 0;
+    }
+    if (a.ticker.length < b.ticker.length)
+      return -1;
+    if (a.ticker.length > b.ticker.length)
+      return 1;
+    return 0;
+  }
+  
+
 export default (state: IAppState = appState, action) => {
     switch (action.type) {
         case LOCATION_CHANGE: {
@@ -39,13 +51,13 @@ export default (state: IAppState = appState, action) => {
             
         }
         case AppActions.GetAssetsListSuccessful: {
-            let value = [{name: 'Not Found'}]
+            let value = [{name: 'Not Found', ticker: '   '}]
             if (action.searchResults.assets) {
                 value = action.searchResults.assets
             }
             return {
                 ...state,
-                assetList: value
+                assetList: value.sort(compare),
             }
         }
         case AppActions.ChooseAsset: {
