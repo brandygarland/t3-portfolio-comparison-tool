@@ -12,6 +12,7 @@ Next, **Install Yarn**:
 
 * [MacOS-installation](https://yarnpkg.com/lang/en/docs/install/#macOS-stable) 
 
+Also, [install SASS](https://sass-lang.com/install).
 
 ### Development
 

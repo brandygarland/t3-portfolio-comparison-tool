@@ -16,3 +16,22 @@ export const colors = {
     brightLavender: '#cb86d9',
     lightGray: '#D3D3D3',
 }
+
+export const colorsArray = [
+    colors.breakerBay,
+    colors.lightForestGreen,
+    colors.summerGreen,
+    colors.morningGlory,
+    colors.lightBlue,
+    colors.shakespeare,
+    colors.denim,
+    colors.midnightBlue,
+    colors.purple,
+    colors.trueViolet,
+    colors.melrose,
+    colors.frenchLilac,
+    colors.paleChestnut,
+    colors.carissma,
+    colors.brightLavender,
+    colors.lightGray,
+]

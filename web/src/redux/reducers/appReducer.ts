@@ -1,27 +1,43 @@
-import {appState, AppStateTypes} from '../store/templates/appState'
+import {appState, IAppState} from '../store/templates/appState'
 
 import { LOCATION_CHANGE } from 'react-router-redux'
 import {
-    CHANGE_INPUT_VALUE, 
+   AppActions 
 } from '../actions/actionTypes'
 
-export default (state: AppStateTypes = appState, action) => {
+const compare = (a,b) => {
+    if (!a.ticker || !b.ticker) {
+        return 0;
+    }
+    if (a.ticker.length < b.ticker.length)
+      return -1;
+    if (a.ticker.length > b.ticker.length)
+      return 1;
+    return 0;
+  }
+  
+
+export default (state: IAppState = appState, action) => {
     switch (action.type) {
         case LOCATION_CHANGE: {
             return {
                 ...state,
-                showNavigateButton: action.payload.pathname === '/',
-                moveBox: false,
-                isSearching: false,
-                sampleData: null,
             }
         }
-        case CHANGE_INPUT_VALUE: {
+        case AppActions.ChangeInputValue: {
 
             if (action.group === 'model-compare') {
                 return {
                     ...state,
                     [action.key]: action.value,
+                }
+            } else if (action.group === 'positions-value') {
+                const currentPositions = state.positions
+                currentPositions[action.key].value = action.value
+                
+                return {
+                    ...state,
+                    positions: currentPositions,
                 }
             } else {
                 return {
@@ -33,6 +49,57 @@ export default (state: AppStateTypes = appState, action) => {
                 }
             }
             
+        }
+        case AppActions.GetAssetsListSuccessful: {
+            let value = [{name: 'Not Found', ticker: '   '}]
+            if (action.searchResults.assets) {
+                value = action.searchResults.assets
+            }
+            return {
+                ...state,
+                assetList: value.sort(compare),
+            }
+        }
+        case AppActions.ChooseAsset: {
+            let currentPositions = state.positions
+            
+            let formattedPosition = {
+                ticker: action.asset.ticker,
+                cusip: action.asset.cusip,
+                isin: action.asset.isin,
+                sedol: action.asset.sedol,
+                weight: 0,
+                value: 0,
+            }
+
+            currentPositions.push(formattedPosition)
+
+            return {
+                ...state,
+                inputs: {
+                    ...state.inputs, 
+                    symbolSearch: appState.inputs.symbolSearch,
+                },
+                positions: currentPositions
+            }
+        }
+
+        case AppActions.RemovePosition: {
+            let currentPositions = state.positions
+            let newPostions = currentPositions.filter(postion => 
+                postion !== action.position
+            )
+
+            return {
+                ...state,
+                positions: newPostions
+            }
+        }
+        case AppActions.AnalyzePortfolioSuccessful: {
+            return {
+                ...state,
+                analytics: action.analyzedPortfolio.stats
+            }   
         }
         default: {
             return state

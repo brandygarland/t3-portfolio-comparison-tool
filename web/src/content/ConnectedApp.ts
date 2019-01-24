@@ -2,16 +2,15 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 import App from './App'
-import {AppStateTypes} from '../redux/store/templates/appState'
-import { changeInputValue } from '../redux/actions/index'
+import { IAppState, IAsset, IPosition } from '../redux/store/templates/appState'
+import { 
+    changeInputValue, triggerObservableAndChangeInputValue, 
+    chooseAsset, removePosition, analyzePortfolio 
+} from '../redux/actions/actionCreators'
 import { Dispatch } from 'redux';
 
-interface mapStateToPropsTypes {
-    appState: AppStateTypes;
-}
-
 export interface IMapStateToPropsApp {
-    appState: AppStateTypes;
+    appState: IAppState;
 
 }
 
@@ -20,6 +19,10 @@ export interface IMapDispatchToPropsApp {
     routeToCompare: () => void;
     comparePortfolios: () => void;
     inputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    triggerObservableOnInputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    chooseAsset: (asset: IAsset) => () => void;
+    removePosition: (postion: IPosition) => () => void;
+
 }
 
 const mapStateToProps = (state: IMapStateToPropsApp, ownProps) =>  {
@@ -37,14 +40,26 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
             dispatch(push('/compare'))
         },
         comparePortfolios: () => {
-            console.log('comparing....')
+            dispatch(analyzePortfolio())
         },
         inputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
             dispatch(changeInputValue(key, group, event.target.value))
         },
+        triggerObservableOnInputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+            dispatch(changeInputValue(key, group, event.target.value))
+            dispatch(triggerObservableAndChangeInputValue(key, group, event.target.value))
+        },
+        chooseAsset: (asset: IAsset) => () =>  {
+            dispatch(chooseAsset(asset))
+        },
+        removePosition: (position: IPosition) => () =>  {
+            dispatch(removePosition(position))
+        },
+
+
     }
 }
 
-const ConnectedSample = withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+const ConnectedApp = withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
 
-export default ConnectedSample
+export default ConnectedApp

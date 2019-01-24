@@ -16,6 +16,7 @@ export default class Chart extends React.PureComponent<IPieChart> {
                 segmentsStyle={{ transition: 'stroke .3s' }}
                 animate={true}
                 lineWidth={50}
+                totalValue={100}
             />
         )
     }
