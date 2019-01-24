@@ -1,8 +1,8 @@
-import { string } from "prop-types";
-import { instruments } from "../../../content/businessLogic/instruments"
-import { mapModelToPositionObject, conservativeModel, moderateModel, aggressiveModel, incomeModel, growthModel } from "../../../content/businessLogic/models";
+import { instruments } from '../../../content/businessLogic/instruments'
+import { mapModelToPositionObject, conservativeModel, moderateModel,
+     aggressiveModel, incomeModel, growthModel } from '../../../content/businessLogic/models'
 
-export const appState:IAppState = {
+export const appState: IAppState = {
     inputs: {
         symbolSearch: '',
         chosenInstrument: '',
@@ -22,7 +22,6 @@ export const appState:IAppState = {
     positions: [],
     instruments: [...instruments],
     analytics: null,
-
         
 }
 
@@ -84,8 +83,15 @@ export interface IInstrument {
 }
 
 export interface IAnalytics {
-    finscore: number;
-    sharpe_hyb_fb_20yr: number;
+    finscore: number | string;
+    sharpe_hyb_fb_20yr: number | string;
+    scenario_strong_fb: number | string;
+    scenario_normal_fb: number | string;
+    scenario_weak_fb: number | string;
+    sortino_ratio_hyb_fb: number | string;
+    fees_total_expense_ratio_lgdf: number | string;
+    scenario_crash2008_hyb_fb: number | string;
+    scenario_fedhikes_mild_fb: number | string;
 }
 
 export interface InputTypes {

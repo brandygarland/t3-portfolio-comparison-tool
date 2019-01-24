@@ -9,7 +9,9 @@
     vertical-align: top;
     border-radius: $border-radius;
     min-height: 600px;
+    height: auto;
     position: relative;
+    padding-bottom: 270px;
 
     @media screen and (max-width: $landscape-phone-to-portrait-tablet-max-width) {
         width: 95%;
@@ -30,7 +32,7 @@
 
 .value-label {
     font-weight: normal;
-    width: 50px;
+    width: 75px;
     text-align: right;
     line-height: 20px;
 }

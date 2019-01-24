@@ -17,7 +17,7 @@
         "eofline": false,
         "forin": true,
         "indent": [ true, "spaces" ],
-        "interface-name": [true, "never-prefix"],
+        "interface-name": [true, "always-prefix"],
         "jsdoc-format": true,
         "jsx-no-lambda": false,
         "jsx-no-multiline-js": false,
@@ -25,9 +25,19 @@
         "max-line-length": [ true, 120 ],
         "member-ordering": [
             true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
+            {
+                "order": [
+                    "public-static-field",
+                    "public-instance-field",
+                    "public-constructor",
+                    "private-static-field",
+                    "private-instance-field",
+                    "private-constructor",
+                    "public-instance-method",
+                    "protected-instance-method",
+                    "private-instance-method"
+                ]
+            }
         ],
         "no-any": false,
         "no-arg": true,
@@ -40,10 +50,9 @@
         "no-eval": true,
         "no-shadowed-variable": false,
         "no-string-literal": true,
-        "no-switch-case-fall-through": true,
+        "no-switch-case-fall-through": false,
         "no-trailing-whitespace": false,
         "no-unused-expression": true,
-        "no-use-before-declare": true,
         "one-line": [
             true,
             "check-catch",
@@ -51,12 +60,12 @@
             "check-open-brace",
             "check-whitespace"
         ],
-        "quotemark": [true, "single", "jsx-double"],
+        "quotemark": [true, "single", "jsx-single"],
         "semicolon": [true, "never", "ignore-interfaces"],
         "switch-default": true,
-
+ 
         "trailing-comma": false,
-
+ 
         "triple-equals": [ true, "allow-null-check" ],
         "typedef": [
             true,
@@ -85,4 +94,4 @@
             "check-typecast"
         ]
     }
-}
+ }
