@@ -116,7 +116,7 @@
     "lint": "tslint 'src/**/*.ts' --force -t codeFrame",
     "prod": "npm run production-sass & npm run production-web",
     "production-sass": "sass web/src/main.scss:web/public/main.css",
-    "production-web": "node_modules/.bin/browserify web/src/index.tsx -p tsify -g [ envify --NODE_ENV production ] -g [ uglifyify ] -o web/public/bundle.js -v",
+    "production-web": "node_modules/.bin/browserify web/src/index.tsx -p tsify -g [ localenvify --envfile .env.prod ] -g [ uglifyify ] -o web/public/bundle.js -v",
     "start": "node_modules/.bin/ts-node server/index.ts",
     "test": "jest --color --verbose --expand --watchAll",
     "watch-sass": "sass --watch web/src/main.scss:web/public/main.css",

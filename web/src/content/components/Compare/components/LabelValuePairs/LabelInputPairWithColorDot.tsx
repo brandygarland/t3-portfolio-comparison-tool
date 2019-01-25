@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ILabelValuePair } from './LabelValuePair'
-import { colors } from '../../../../common/colors';
+import { colors } from '../../../../common/colors'
 
 interface ILabelInputPairWithColorDot extends ILabelValuePair {
     color: string;
@@ -25,7 +25,7 @@ const LabelInputPairWithColorDot = (props: ILabelInputPairWithColorDot) => {
             />
             <label 
                 className={'bold-label'} 
-                style={{width: `15px`, display: `inline-block`, marginLeft: '5px',}} 
+                style={{width: `15px`, display: `inline-block`, marginLeft: '5px'}} 
             >
                 %
             </label>
