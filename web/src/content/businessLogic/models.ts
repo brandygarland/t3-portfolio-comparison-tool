@@ -1,5 +1,5 @@
-import { colors } from '../common/colors';
-import { IPosition } from '../../redux/store/templates/appState';
+import { colors } from '../common/colors'
+import { IPosition } from '../../redux/store/templates/appState'
 
 export interface IModelData {
     symbol: string;
