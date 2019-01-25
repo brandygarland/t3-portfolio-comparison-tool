@@ -13,7 +13,7 @@ export default class Homepage extends React.PureComponent<IHomepage> {
                     <div className='row'>
                         <div className='col-lg-12'>
                             <div id='content'>
-                                <img src='./assets/tradePMR.png'/>
+                                <img src='./assets/tradepmr.png'/>
                                 <h3>Portfolio Comparison Tool</h3>
                                 <hr/>
                                 <button 

@@ -16,25 +16,30 @@
   min-height: 600px;
   height: auto;
   position: relative;
-  padding-bottom: 270px; }
-  @media screen and (max-width: 767px) {
-    .compare-grid-container {
-      width: 95%;
-      margin: auto;
-      margin-bottom: 10px;
-      display: block; } }
+  padding-bottom: 270px;
+}
+@media screen and (max-width: 767px) {
+  .compare-grid-container {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+  }
+}
 
 .bold-label {
   font-weight: bold;
   width: 200px;
   text-align: left;
-  line-height: 20px; }
+  line-height: 20px;
+}
 
 .value-label {
   font-weight: normal;
   width: 75px;
   text-align: right;
-  line-height: 20px; }
+  line-height: 20px;
+}
 
 .color-dot {
   width: 20px;
@@ -42,7 +47,8 @@
   display: inline-block;
   border-radius: 50%;
   margin-right: 10px;
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 .asset-card {
   width: 390px;
@@ -50,23 +56,29 @@
   min-height: 20px;
   border-bottom: solid lightgray 1px;
   margin: auto;
-  text-align: center; }
-  .asset-card:active {
-    background-color: lightgray; }
+  text-align: center;
+}
+.asset-card:active {
+  background-color: lightgray;
+}
 
 .asset-span {
   display: block;
   text-align: left;
-  margin-left: 5px; }
+  margin-left: 5px;
+}
 
 .name-span {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .ticker-span {
-  font-style: italic; }
+  font-style: italic;
+}
 
 .clickable-icon:active {
-  color: gray; }
+  color: gray;
+}
 
 .label {
   font-family: Arial;
@@ -75,41 +87,49 @@
   text-align: right;
   width: 100px;
   margin-right: 5px;
-  display: inline-block; }
+  display: inline-block;
+}
 
 .select {
   font-family: Arial;
   font-weight: bold;
   font-size: 16px;
-  margin-left: 5px; }
-  .select option {
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 16px; }
+  margin-left: 5px;
+}
+.select option {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 16px;
+}
 
 .input {
   font-family: Arial;
   border-radius: 4px;
   width: 150px;
-  height: 15px; }
+  height: 15px;
+}
 
 .inline-input-container {
   width: 350px;
   margin: auto;
   text-align: left;
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+}
 
 html {
-  width: 100vw; }
+  width: 100vw;
+}
 
 #root {
   width: 100vw;
   min-height: 100vh;
-  background-color: #777777; }
+  background-color: #777777;
+}
 
 /*# sourceMappingURL=main.css.map */
