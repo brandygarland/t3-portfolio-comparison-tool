@@ -1,22 +1,23 @@
-import {appState, IAppState} from '../store/templates/appState'
+import { appState, IAppState } from '../store/templates/appState'
 
 import { LOCATION_CHANGE } from 'react-router-redux'
 import {
    AppActions 
 } from '../actions/actionTypes'
 
-const compare = (a,b) => {
+const compare = (a, b) => {
     if (!a.ticker || !b.ticker) {
-        return 0;
+        return 0
     }
-    if (a.ticker.length < b.ticker.length)
-      return -1;
-    if (a.ticker.length > b.ticker.length)
-      return 1;
-    return 0;
+    if (a.ticker.length < b.ticker.length) {
+        return -1
+    }     
+    if (a.ticker.length > b.ticker.length) {
+        return 1
+    }    
+    return 0
   }
   
-
 export default (state: IAppState = appState, action) => {
     switch (action.type) {
         case LOCATION_CHANGE: {

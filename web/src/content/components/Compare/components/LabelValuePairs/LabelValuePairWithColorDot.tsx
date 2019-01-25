@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ILabelValuePair } from './LabelValuePair'
 
-interface ILabelValuePairWithColorDot extends ILabelValuePair{
+interface ILabelValuePairWithColorDot extends ILabelValuePair {
     color: string;
 }
 

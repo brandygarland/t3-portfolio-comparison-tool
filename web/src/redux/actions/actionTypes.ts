@@ -8,10 +8,7 @@ export enum AppActions {
     ChooseAsset = 'CHOOSE_ASSET',
     RemovePosition = 'REMOVE_POSITION',
 
-
     AnalyzePortfolio = 'ANALYZE_PORTFOLIO',
     AnalyzePortfolioSuccessful = 'ANALYZE_PORTFOLIO_SUCCESSFUL',
     AnalyzePortfolioFailed = 'ANALYZE_PORTFOLIO_FAILED',
-
-
 }

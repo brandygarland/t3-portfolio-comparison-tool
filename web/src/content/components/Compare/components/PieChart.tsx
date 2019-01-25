@@ -1,6 +1,5 @@
 import * as React from 'react'
-import PieChart from 'react-minimal-pie-chart';
-
+import PieChart from 'react-minimal-pie-chart'
 
 interface IPieChart {
     data: {title: string, value: number, color: string}[];

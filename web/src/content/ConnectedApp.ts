@@ -7,7 +7,7 @@ import {
     changeInputValue, triggerObservableAndChangeInputValue, 
     chooseAsset, removePosition, analyzePortfolio 
 } from '../redux/actions/actionCreators'
-import { Dispatch } from 'redux';
+import { Dispatch } from 'redux'
 
 export interface IMapStateToPropsApp {
     appState: IAppState;
@@ -18,8 +18,10 @@ export interface IMapDispatchToPropsApp {
     routeToLogIn: () => void;
     routeToCompare: () => void;
     comparePortfolios: () => void;
-    inputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    triggerObservableOnInputChange: (key: string , value: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    inputChange: (key: string , value: string) =>
+     (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    triggerObservableOnInputChange: (key: string , value: string) =>
+     (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     chooseAsset: (asset: IAsset) => () => void;
     removePosition: (postion: IPosition) => () => void;
 
@@ -42,10 +44,12 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
         comparePortfolios: () => {
             dispatch(analyzePortfolio())
         },
-        inputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        inputChange: (key: string , group: string) => 
+            (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
             dispatch(changeInputValue(key, group, event.target.value))
         },
-        triggerObservableOnInputChange: (key: string , group: string) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        triggerObservableOnInputChange: (key: string , group: string) =>
+             (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
             dispatch(changeInputValue(key, group, event.target.value))
             dispatch(triggerObservableAndChangeInputValue(key, group, event.target.value))
         },
@@ -55,8 +59,6 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps): IMapDispatchToPropsAp
         removePosition: (position: IPosition) => () =>  {
             dispatch(removePosition(position))
         },
-
-
     }
 }
 

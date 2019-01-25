@@ -1,15 +1,15 @@
 import * as React from 'react'
 import { Route, Switch } from 'react-router'
 import { IApp } from './App'
-import Homepage from './components/Homepage/Homepage';
-import Login from './components/Login/Login';
-import Compare from './components/Compare/Compare';
+import Homepage from './components/Homepage/Homepage'
+import Login from './components/Login/Login'
+import Compare from './components/Compare/Compare'
 
-export interface RoutesTypes extends IApp {
+export interface IRoutesTypes extends IApp {
     
 }
 
-const Routes = (props: RoutesTypes) => {
+const Routes = (props: IRoutesTypes) => {
     return (
         <>
             <Switch>

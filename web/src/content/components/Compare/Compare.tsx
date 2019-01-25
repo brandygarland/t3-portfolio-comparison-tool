@@ -14,11 +14,17 @@ interface ICompare extends IApp {
 export default class Compare extends React.PureComponent<ICompare> {
 
     render() {
-        let modelData: IChartData[] = [{ title: 'empty', value: 50, color: colors.lightGray}, { title: 'empty', value: 50, color: colors.lightGray}]
-        if (this.props.appState.modelToUse !== null ){
+        let modelData: IChartData[] = [
+            { title: 'empty', value: 50, color: colors.lightGray}, 
+            { title: 'empty', value: 50, color: colors.lightGray}
+        ]
+        if (this.props.appState.modelToUse !== null ) {
             modelData = mapModelToPieChart(models[this.props.appState.modelToUse])
         } 
-        let otherData: IChartData[] = [{ title: 'empty', value: 50, color: colors.lightGray}, { title: 'empty', value: 50, color: colors.lightGray}]
+        let otherData: IChartData[] = [
+            { title: 'empty', value: 50, color: colors.lightGray}, 
+            { title: 'empty', value: 50, color: colors.lightGray}
+        ]
 
         if (this.props.appState.positions.length > 0) {
             otherData = []
@@ -35,11 +41,8 @@ export default class Compare extends React.PureComponent<ICompare> {
             if (value < 100) {
                 otherData.push({ title: 'empty', value: (100 - value), color: colors.lightGray})
             }
-        
 
-            
         }
-
         return (
             <>
                 <CompareGrid

@@ -17,7 +17,7 @@ export default class Models extends React.PureComponent<IModels, IModelsState> {
     }
 
     changeModel = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        this.props.inputChange("modelToUse", "model-compare")(event)
+        this.props.inputChange('modelToUse', 'model-compare')(event)
     }
 
     render() {
@@ -30,12 +30,17 @@ export default class Models extends React.PureComponent<IModels, IModelsState> {
                         onChange={this.changeModel} 
                         defaultValue={'placeholder'}
                         className='form-control'
-                        style={{width: `200px`,margin: `auto`}}
+                        style={{width: `200px`, margin: `auto`}}
                     >
                         <option value={'placeholder'} disabled={true}>Select a Model...</option>
                         {modelOptions.map((option, index) => {
                             return (
-                                <option value={option} key={index}>{option.charAt(0).toUpperCase()}{option.slice(1)}</option>
+                                <option
+                                     value={option} 
+                                     key={index}
+                                >
+                                    {option.charAt(0).toUpperCase()}{option.slice(1)}
+                                </option>
                             )
                         })}
                     </select>

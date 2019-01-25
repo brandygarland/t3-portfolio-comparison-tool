@@ -19,4 +19,3 @@ if (process.env.NODE_ENV !== 'production') {
 
 export default createStore(rootReducer, middleware)
 epicMiddleware.run(rootEpic)
-
