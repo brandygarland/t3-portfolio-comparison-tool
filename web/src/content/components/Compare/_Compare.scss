@@ -53,6 +53,7 @@
     border-bottom: solid lightgray 1px;
     margin: auto;
     text-align: center;
+  
 
     &:active {
         background-color: lightgray;
@@ -62,6 +63,7 @@
 .asset-span {
     display: block;
     text-align: left;
+    margin-left: 5px;
 }
 
 .name-span {

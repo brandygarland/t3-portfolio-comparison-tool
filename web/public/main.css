@@ -65,6 +65,7 @@
 .asset-span {
   display: block;
   text-align: left;
+  margin-left: 5px;
 }
 
 .name-span {
