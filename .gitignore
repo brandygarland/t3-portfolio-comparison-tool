@@ -3,3 +3,6 @@
 node_modules/*
 .env.prod
 .env
+web/public/main.css
+web/public/bundle.js
+web/public/main.css.map
