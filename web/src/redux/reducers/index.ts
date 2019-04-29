@@ -5,7 +5,6 @@ import appState from './appReducer'
 import analyzePortfolio from '../epics/analyzePortfolio'
 import getAssets from '../epics/getAssets'
 
-
 export const rootReducer =  combineReducers({
     router: routerReducer,
     appState,

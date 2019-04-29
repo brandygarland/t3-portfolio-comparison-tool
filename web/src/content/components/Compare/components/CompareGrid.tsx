@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Chart from './PieChart';
-import Analytics from './Analytics';
-import { IAnalytics } from '../../../../redux/store/templates/appState';
+import Chart from './PieChart'
+import Analytics from './Analytics'
+import { IAnalytics } from '../../../../redux/store/templates/appState'
 
 export interface IChartData {
     title: string;
@@ -36,4 +36,3 @@ export default class CompareGrid extends React.PureComponent<ICompareGrid> {
     }
 
 }
-

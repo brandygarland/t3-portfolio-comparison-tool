@@ -10,12 +10,9 @@ import 'date-input-polyfill'
 
 ReactDOM.render(
     <Provider store={store}>
-                <ConnectedRouter history={history}>
-                    <Route path="/" component={ConnectedApp}/>
-                </ConnectedRouter>
-            </Provider>,
+        <ConnectedRouter history={history}>
+            <Route path='/' component={ConnectedApp}/>
+        </ConnectedRouter>
+    </Provider>,
 
     document.getElementById('root'))
-
-
-    
