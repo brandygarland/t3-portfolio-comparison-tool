@@ -32,9 +32,7 @@ class FinMasonService implements IFinMasonService {
         
     private analyzePortfolioUrl = () => `portfolio/analyze`
 
-    private getAssetsUrl = () => `asset/search`
-
-
+    private getAssetsUrl = () => `asset/list`
 
 }
 
